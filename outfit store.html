@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <META name="viewport" content="width=device-width", initial-scale="1.0">
+            <title>hm outfit store</title>
+            <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+
+            <style>
+                * {
+                    box-sizing: border-box;
+                }
+                body {
+                    
+  margin: 0;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #0F2027, #2C5364);
+
+  padding-top: 70px;
+  
+  color: white;
+}
+
+                    
+
+                
+                .frame-container {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+                }
+                .frames {
+    background: #ccc;
+    color:#111827;
+    font-size: 25px;
+    font-weight: 600;
+    font-family: Montserrat Bold;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    margin: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    text-align: center;
+    padding: 70px;
+    border: 1px solid rgba(0,0,0,0.2);
+}
+
+.frames:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+    background: linear-gradient(135deg, #218838, #1e7e34); /* darker on hover */
+}
+
+                
+                .fake {
+                    width: 100%;
+                    height: 200px;
+                    background-color: #ccc;
+                    border-radius: 2px;
+                    overflow: hidden; /* isitoke image yake nje ya border radius*/
+                }
+                .fake img  {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: inherit;
+                    display: block; /*kuondoa space chini ya image*/
+                }d
+                .gallery {
+                    border: 1px solid #ccc;
+
+                }
+                .gallery img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover; 
+                    
+
+
+                }
+                .response {
+                    float: left;
+                    width: 24.999999%;
+                    padding: 0 6px;
+                }
+                .desk {
+                    text-align: center;
+                    padding: 15px;
+
+                }
+                .topnav {
+                    position: fixed; /* hata ukiscroll page ipo kulia tu*/
+                    top: 0;/* juu kabisa*/
+                    left: 0;
+                    display: flex;
+                    z-index: 1000; /* ili isifunikwe na content*/
+                    width: 100%;
+                    justify-content: flex-end;
+                   background: linear-gradient(135deg, #3A6073, #16222A);
+                    align-items: center;
+                    gap: 20px;
+                    padding: 15px 30px;
+                    height: 80px;
+                    overflow: hidden;
+
+                }
+                    
+                
+                .topnav a {
+                    transition: color 0.3s;
+                    font-weight: 500;
+                    padding: 14px 16px;
+                    text-align: center;
+                    display: block;
+                    text-decoration: none;
+                    color: #F9FAFB;
+
+                }
+                .topnav a:hover {
+                    background-color: #3B82F6;
+                    color: white;
+
+                }
+                .topnav .logo {
+                  position: absolute;
+                  left: 20px;
+                  top: 10px;
+                }
+                .topnav .logo img {
+                 
+                  width: auto;
+                  height: 100%;
+                  max-height: 150px;
+                  object-fit: contain;
+                  position: relative;
+                  top: -50px;
+                  margin-left: 30px;
+                  
+                } 
+                section:target + .topnav a[href="#ordernow"],
+section:target + .topnav a[href="#t-shirt"],
+section:target + .topnav a[href="#jeans"],
+section:target + .topnav a[href="#shoes"] {
+  color: yellow; /* highlight active link */
+}
+
+              
+                  
+                  
+                
+                .card-container {
+                    display: block;/* zijipange kama paragraph*/                 
+                    background: linear-gradient(135deg, #0F2027, #2C5364);
+                    color: white;
+                    padding: 30px;
+                    
+                }
+                .card {
+                    padding: 20px;
+                    margin-bottom: 20px;
+                    background: linear-gradient(135deg, #0F2027, #2C5364);
+                    border-radius: 12px;
+                    box-shadow: 0 4px 12px rgba(0 0 0 0.1);
+                    transition: transform 0.3s ease;
+                }
+                .card:hover {
+                    transform: translateY(-5px);
+                }
+                 h1 {
+                    font-size: 50px;
+                    text-align: center;
+                    background: transparent;
+                    color: #FFFFFF;
+                    font-weight: 700;    
+                    
+                 }
+              p {
+                color: #D1D5DB;
+                font-size: 18px;
+                font-weight: 400; 
+                text-align: center; 
+                }
+              h3 {
+                  font-weight: 500;
+                  color:black;
+                }  
+                 .hero-card {
+    height: 400px; /* ongeza au punguza ukubwa unavyotaka */
+    height: 60vh;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 50px;
+    text-align: center;
+
+    background-image: url('https://images.unsplash.com/photo-1637228393246-c38a4b3d2011?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8b3V0Zml0JTIwY2VudGVyfGVufDB8fDB8fHww');
+    background-size: cover; /* inafanya image ifit card nzima */
+    background-position: center; /* image iwe centered */
+    background-repeat: no-repeat;
+}
+ .order-container {
+      background: sandybrown;
+      backdrop-filter: blur(10px);
+      width: 100%;
+      height: 100%;
+      padding: 40px;
+      overflow-y: auto;
+      color: #fff;
+    }
+
+    .order-container h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 32px;
+      color: #fff;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #fff;
+      font-size: 16px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid black;
+      border-radius: 5px;
+      background: white;
+      color: black;
+      font-size: 15px;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: black;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      background: green;
+      color: #fff;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #128C7E;
+    }
+
+    @media (max-width: 768px) {
+      .order-container {
+        padding: 20px;
+      }
+
+      .order-container h2 {
+        font-size: 28px;
+      }
+
+      input, textarea, button {
+        font-size: 16px;
+      }
+    }
+    
+ .product {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  padding: 20px;
+  
+  gap: 20px;
+ 
+  
+  
+  
+
+}
+
+
+
+.zombie {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  transition: 0.3s;;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.zombie img {
+  width: 100%;
+  height: 300px;
+  border-radius: 8px;
+  
+  object-fit: cover;
+}
+.zombie .desk {
+    min-height: 60px;
+    font-size: 16px;
+    background: #F9FAFB;
+    color: black;
+}
+/* Social icons */
+    .social-icons a img {
+      width: 35px;
+      margin: 0 10px;
+      transition: transform 0.3s;
+    }
+    .social-icons a img:hover {
+      transform: scale(1.1);
+    }
+     /* Footer */
+    .footer {
+      padding: 20px;
+      text-align: center;
+      background: #333;
+      color: white;
+      margin-top: 30px;
+    }
+       h4 {
+        background-color:#5c6f7c;
+        display: inline-block;
+        border-radius: 8px;
+        text-align: center;
+        color:#FFFFFF;
+        padding: 12px 20px;
+        margin-top: 20px;
+
+       }  
+       h3 {
+        background-color:#ccc;
+        display: inline;
+        width:fit-content;
+       }    
+         .contact-section {
+  background: linear-gradient(135deg, #3A6073, #16222A);
+  color: white;
+  padding: 60px 20px;
+}
+
+.contact-container {
+  display: flex;
+  gap: 50px;
+  max-width: 1000px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.contact-info {
+  flex: 1 1 300px;
+}
+
+.contact-info h2 {
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+
+.contact-info p {
+  margin: 8px 0;
+}
+
+.social-icons {
+  margin-top: 15px;
+}
+
+.social-icons a img {
+  width: 35px;
+  margin-right: 10px;
+  transition: transform 0.3s;
+}
+
+.social-icons a img:hover {
+  transform: scale(1.1);
+}
+
+.contact-form {
+  flex: 1 1 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+}
+
+.contact-form button {
+  background-color: #3B82F6;
+  color: white;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact-form button:hover {
+  background-color: #2563EB;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
+  }
+}                           
+/* Global adjustments for responsiveness */
+@media (max-width: 1200px) {
+  .frame-container {
+    justify-content: center;
+  }
+
+  .frames {
+    flex: 1 1 45%;
+    font-size: 22px;
+    padding: 50px;
+  }
+
+  .topnav {
+    padding: 10px 20px;
+    height: 70px;
+  }
+
+  .topnav a {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  .topnav .logo img {
+    max-height: 100px;
+    top: -40px;
+  }
+
+  .hero-card {
+    font-size: 40px;
+  }
+
+  h1 {
+    font-size: 42px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+
+  .zombie img {
+    height: 250px;
+  }
+
+  .desk {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 992px) {
+  .frames {
+    flex: 1 1 48%;
+    padding: 40px;
+  }
+
+  .topnav {
+    justify-content: space-around;
+  }
+
+  .hero-card {
+    font-size: 35px;
+    height: 50vh;
+  }
+
+  h1 {
+    font-size: 36px;
+  }
+
+  p {
+    font-size: 15px;
+  }
+
+  .zombie img {
+    height: 220px;
+  }
+
+  .desk {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 768px) {
+  .frame-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .frames {
+    width: 80%;
+    padding: 35px;
+    font-size: 20px;
+  }
+
+  .topnav {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+
+  .topnav a {
+    font-size: 16px;
+    padding: 8px 10px;
+  }
+
+  .topnav .logo img {
+    max-height: 80px;
+    top: -30px;
+  }
+
+  .hero-card {
+    font-size: 28px;
+    height: 45vh;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  .product {
+    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .zombie img {
+    height: 180px;
+  }
+
+  .desk {
+    font-size: 12px;
+  }
+
+  .order-container {
+    padding: 20px;
+  }
+
+  .order-container h2 {
+    font-size: 24px;
+  }
+
+  input, textarea, button {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .contact-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .contact-info h2 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .frames {
+    width: 100%;
+    padding: 25px;
+    font-size: 18px;
+  }
+
+  .hero-card {
+    font-size: 22px;
+    height: 35vh;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 13px;
+  }
+
+  .zombie img {
+    height: 150px;
+  }
+
+  .desk {
+    font-size: 11px;
+  }
+
+  input, textarea, button {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  .topnav a {
+    font-size: 14px;
+    padding: 6px 8px;
+  }
+
+  .topnav .logo img {
+    max-height: 60px;
+    top: -20px;
+  }
+
+  .order-container h2 {
+    font-size: 20px;
+  }
+
+  .contact-info h2 {
+    font-size: 24px;
+  }
+}
+/* Mobile responsiveness for navbar */
+@media (max-width: 768px){
+  .topnav a:not(.icon) { 
+    display: none; /* fichua links zote isipokuwa hamburger */
+  }
+  .topnav a.icon { 
+    display: block; /* onyesha hamburger icon */
+    font-size: 28px;
+    cursor: pointer;
+  }
+}
+
+/* Display vertical menu when hamburger clicked */
+.topnav.responsive {
+  flex-direction: column;
+  align-items: flex-start; /* links kushoto kabisa */
+  padding: 10px;
+}
+.topnav.responsive a {
+  display: block;
+  width: 100%;
+  text-align: left;
+  margin: 5px 0;
+}
+
+
+
+
+                </style>
+                </head>
+                <body>
+                    <div class="topnav">
+                      <div class="logo">
+                         <img src="https://i.imgur.com/ozxnNzR.png" alt="logo">
+                         </div>
+                        <a href="#t-shirt">T-SHIRTS</a>
+                        
+                        <a href="#jeans">JEANS</a>
+                        <a href="#shoes">SHOES</a>
+                        <a href="#ordernow" style="background-color:#3B82F6; color:white;">ORDER NOW</a>
+                        <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">&#9776;</a>
+
+                    </div>
+                    <div class="card-container">
+                        <div class="card">
+                            <h1>HM OUTFIT STORE</h1>
+                            <div class="card hero-card">
+                               
+                            </div>
+
+                            
+                                
+                            </div>
+                            <div class="card">
+                                <p>On this page, you can easily access the following services and features designed to make your shopping experience seamless and enjoyable. Browse our collections, get in touch, or enjoy quick delivery — all from one place</p>
+                                
+                                <div class="frame-container">
+                                    <div class="frames"><a href="#store"></a>look our store</div>
+                                    <div class="frames"><a href="#delivery"></a>quick delivery</div>
+                                    <div class="frames"><a href="#contactus"></a> contact us</div>
+                                </div>
+                            </div>
+                            <div class="card" id="t-shirt">
+                                <h1>T-SHIRTS</h1>
+                                <p>Explore our branded t-shirts, available in various sizes at affordable prices</p>
+                                <div class="product" id="store">
+                                    <div class="zombie">
+                                    
+                                        <img src="https://images.unsplash.com/photo-1647664856968-880b8eccd588?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dCUyMHNoaXJ0JTIwY29sbGVjdGlvbnN8ZW58MHx8MHx8fDA%3D" alt="crewneck" width="600" height="400">
+                                        <div class="desk"><h3>CREW NECK</h3><H5>SIZE:S,M,L,XL</H5><H4>PRICE:$15-$40</H4>
+
+</div>
+
+                                    </div>
+
+                                
+                                
+                                    <div class="zombie">
+                                        <img src="https://images.unsplash.com/photo-1609709295948-17d77cb2a69b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHNoaXJ0fGVufDB8fDB8fHww" alt="classictee" width="600" height="400">
+                                        <div class="desk"><h3>V- NECK</h3><H5>SIZE:S,M,L,XL</H5><H4>PRICE:$18-$45</div>
+
+                            </div>
+                            
+                            
+                                    <div class="zombie">
+                                         <img src="https://images.unsplash.com/photo-1694537745758-5938e6822ab4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHQlMjBzaGlydCUyMGNvbGxlY3Rpb258ZW58MHx8MHx8fDA%3D" alt="classictee" width="600" height="400">
+                                        <div class="desk"><h3>LONG-SLEEVE</h3><H5>SIZE:S,M,L,XL</H5><H4>PRICE:$20-$50</div>
+                             </div>
+                            
+                            
+                                    <div class="zombie">
+                                       <img src="https://images.unsplash.com/photo-1585205122286-d6fc6e911a6c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGxhaW50JTIwc2hpcnQlMjBjb2xsZWN0aW9ufGVufDB8fDB8fHww" alt="classictee" width="600" height="400">
+                                        <div class="desk"><h3>PLAIN-TSHIRT</h3><H5>SIZE:S,M,L,XL</H5><H4>PRICE:$10-$30</div>
+                            </div>
+                            
+                           </div>
+                           </div>
+                           
+                           <div class="card" id="jeans">
+                            <h1>JEANS</h1>
+                            <P>Explore one of our latest jeans in store</P> 
+                            <div class="product">
+                           <div class="zombie">
+                                    
+                                        <img src="https://images.unsplash.com/photo-1560243563-062bfc001d68?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8c2tpbm55JTIwamVhbnMlMjBjb2xsZWN0aW9ufGVufDB8fDB8fHww" alt="crewneck" width="600" height="400">
+                                        <div class="desk"><h3>SKINNY</h3><H5>SIZE:S,M,L,XL</H5><H4>PRICE:$40-$90</h3></div>
+
+                                    </div>
+
+                                
+                                
+                                    <div class="zombie">
+                                        <img src="https://images.unsplash.com/photo-1634564235572-cd6f37694266?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8c3RyYWlnaHQlMjBsZWclMjBqZWFucyUyMGNvbGxlY3Rpb25zfGVufDB8fDB8fHww" alt="classictee" width="600" height="400">
+                                        <div class="desk"><h3>STRAIGHT-LEG</h3><H5>SIZE:S,M,L,XL</H5><H4>PRICE:$45-$95</div>
+
+                            </div>
+                            
+                            
+                                    <div class="zombie">
+                                         <img src="https://images.unsplash.com/photo-1715758890151-2c15d5d482aa?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Ym9vdGN1dCUyMGplYW5zJTIwY29sbGVjdGlvbnN8ZW58MHx8MHx8fDA%3D" alt="classictee" width="600" height="400">
+                                        <div class="desk"><h3>BOOT-CUT</h3><H5>SIZE:S,M,L,XL</H5><H4>PRICE:$50-$100</div>
+                             </div>
+                            
+                            
+                                    <div class="zombie">
+                                       <img src="https://plus.unsplash.com/premium_photo-1690820317364-3e22c2f68eb4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aGlnaCUyMHdhaXN0ZWQlMjBqZWFucyUyMHN0b3JlfGVufDB8fDB8fHww" alt="classictee" width="600" height="400">
+                                        <div class="desk"><h3>HIGH-WAISTED</h3><H5>SIZE:S,M,L,XL</H5><H4>PRICE:$50-$110</div>
+                            </div>
+                            
+                           </div>
+                           </div>
+                           
+                                       <div class="card" id="shoes">
+                                        <h1>SHOES</h1>
+                                        <P>Do you want to wear branded shoes? What are you waiting for? Select your favourite and buy now!  </P>
+                                        <div class="product">
+                                        
+                                   <div class="zombie">
+                                    
+                                        <img src="https://images.unsplash.com/photo-1637003833874-971d4da7eea6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aGVlbHMlMjBjb2xsZWN0aW9ufGVufDB8fDB8fHww" alt="crewneck" width="600" height="400">
+                                        <div class="desk"><h3>HEELS</h3><H5>SIZE:S,M,L,XL</H5><H4>PRICE:$50-$120</div>
+
+                                    </div>
+
+                                
+                                
+                                    <div class="zombie">
+                                        <img src="https://images.unsplash.com/photo-1647089490729-4ba9a9317eb0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGxvYWZlcnMlMjBjb2xsZWN0aW9ufGVufDB8fDB8fHww" alt="classictee" width="600" height="400">
+                                        <div class="desk"><h3>LOAFERS</h3><H5>SIZE:S,M,L,XL</H5><H4>PRICE:$60-$130</div>
+
+                            </div>
+                            
+                            
+                                    <div class="zombie">
+                                         <img src="https://plus.unsplash.com/premium_photo-1682435561654-20d84cef00eb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8c25lYWtlcnN8ZW58MHx8MHx8fDA%3D" alt="classictee" width="600" height="400">
+                                        <div class="desk"><h3>SNEAKERS</h3><H5>SIZE:S,M,L,XL</H5><H4>PRICE:$60-$140</div>
+                             </div>
+                            
+                            
+                                    <div class="zombie">
+                                       <img src="https://images.unsplash.com/photo-1582908880300-868a0de4e0d8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Ym9vdHMlMjBjb2xsZWN0aW9ufGVufDB8fDB8fHww" alt="classictee" width="600" height="400">
+                                        <div class="desk"><h3>BOOTS</h3><H5>SIZE:S,M,L,XL</H5><H4>PRICE:$70-$150</div>
+                            </div>
+                            
+                           </div>
+                           </div>
+                           
+                                       <div class="card" id="ordernow">
+                                        <h1>ORDER NOW & GET QUICK DELIVERY</h1>
+                                        
+<div class="order-container" id="delivery">
+  <h2>Place Your Order</h2>
+  <form id="orderForm">
+    <label for="name">Your Name:</label>
+    <input type="text" id="name" name="name" placeholder="enter your name here" required>
+
+    <label for="product">Product:</label>
+    <input type="text" id="product" name="product" placeholder="What do you want to wear?" required>
+
+    <label for="quantity">Quantity:</label>
+    <input type="number" id="quantity" name="quantity" placeholder="1" required>
+
+    <label for="note">Additional Note:</label>
+    <textarea id="note" name="note" placeholder="describe size,color,discount e.t.c"></textarea>
+
+    <button type="button" onclick="sendWhatsApp()">Submit Order</button>
+  </form>
+</div>
+
+<script>
+function sendWhatsApp() {
+  var name = document.getElementById("name").value;
+  var product = document.getElementById("product").value;
+  var quantity = document.getElementById("quantity").value;
+  var note = document.getElementById("note").value;
+
+  var message = `Hello, my name is ${name}. I want to order ${quantity} of ${product}.`;
+  if(note) {
+    message += ` Note: ${note}`;
+  }
+
+  // Replace PHONE_NUMBER with your WhatsApp number (including country code)
+  var whatsappURL = `https://wa.me/255674044676?text=${encodeURIComponent(message)}`;
+
+  window.open(whatsappURL, "_blank");
+}
+</script>
+
+                                       </div>
+                                         <section id="contactus" class="contact-section">
+  <div class="contact-container">
+    
+    <!-- Info / Left Side -->
+    <div class="contact-info">
+      <h2>Contact Us</h2>
+      <p>Have questions or want to place an order? Reach out and we'll respond as soon as possible.</p>
+      <p><strong>Email:</strong> hmbusiness49@gmail.com</p>
+      <p><strong>Phone:</strong> 0674044676</p>
+      
+      <div class="social-icons">
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram"></a>
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"></a>
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter"></a>
+      </div>
+    </div>
+
+    <!-- Form / Right Side -->
+    <form class="contact-form">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+      <label for="product">Product</label>
+      <input type="text" id="product" name="product" placeholder="Which product are you interested in?" required>
+
+      <label for="message">Message / Notes</label>
+      <textarea id="message" name="message" placeholder="Additional details, size, color, discount..." rows="5"></textarea>
+
+      <button type="button" onclick="sendEmail()">send Email</button>
+    </form>
+
+  </div>
+</section>
+<script>
+function sendEmail() {
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const product = document.getElementById("product").value;
+  const message = document.getElementById("message").value;
+
+  // Create the email subject and body
+  const subject = `HM Outfit Store Order from ${name}`;
+  let body = `Name: ${name}\nEmail: ${email}\nProduct: ${product}\n`;
+  if(message) body += `Message / Notes: ${message}\n`;
+
+  // Encode for URL
+  const mailtoLink = `mailto:hmbusiness49@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+  // Open default email client
+  window.location.href = mailtoLink;
+}
+</script>
+<script>
+function toggleMenu() {
+  var navbar = document.querySelector(".topnav");
+  navbar.classList.toggle("responsive");
+}
+</script>
+                                       <div class="footer">
+                                           <p>&copy;2025 Hassani Mfwangavo. All rights reserved</p>
+                                           </div>
+
+
+
+                           
+                          
+                           
+                        
+
+                    
+                </body>
+                </html>
+
+
+                  
+
+
+                    
+
+                
+          
+
+
+                  
+
+
+                    
+
+                
+                
+   
